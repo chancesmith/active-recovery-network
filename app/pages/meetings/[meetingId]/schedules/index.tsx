@@ -19,12 +19,14 @@ export const SchedulesList = () => {
   const goToPreviousPage = () => router.push({ query: { page: page - 1 } })
   const goToNextPage = () => router.push({ query: { page: page + 1 } })
 
+  if (!meetingId) return <p>404 Meeting/??/Schedule not found</p>
+
   return (
     <div>
       <ul>
         {schedules.map((schedule) => (
           <li key={schedule.id}>
-            <Link href={Routes.ShowSchedulePage({ scheduleId: schedule.id })}>
+            <Link href={Routes.ShowSchedulePage({ scheduleId: schedule.id, meetingId: meetingId })}>
               <a>
                 {schedule.dayOfWeek} {schedule.startTime}
               </a>
