@@ -154,11 +154,11 @@ const MeetingCard = ({
           border-radius: 0.5rem;
           width: 0.8rem;
           height: 0.8rem;
-          background: green;
+          background: #4cc859;
           margin: 0.1rem 0.5rem 0 0;
         }
         .c-meeting-card__led--stale {
-          background: orange;
+          background: #f3bc4e;
         }
         .c-meeting-card__led--inactive {
           background: #ccc;
@@ -168,10 +168,10 @@ const MeetingCard = ({
         }
 
         .c-meeting-card__favorite {
-          color: red;
+          color: rgb(216, 94, 94);
         }
         .c-meeting-card__favorite--favorited {
-          color: red;
+          color: rgb(216, 94, 94);
         }
         .c-meeting-card__actions {
           padding-top: 0.5rem;

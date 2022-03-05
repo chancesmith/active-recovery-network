@@ -130,9 +130,13 @@ export const SchedulesList = () => {
     <div>
       <div className="c-page-header c-page-header--meetings">
         <span className="c-intro">Upcoming meetings for</span>{" "}
-        <h1 className="c-heading">
-          {cityFilter}, {stateFilter}
-        </h1>
+        {cityFilter && stateFilter ? (
+          <h1 className="c-heading">
+            {cityFilter}, {stateFilter}
+          </h1>
+        ) : (
+          <h1 className="c-heading">All Cities</h1>
+        )}
       </div>
       <div className="layout-wrapper layout-wrapper--top-overlay">
         {cityFilter + " " + stateFilter + " " + dayFilter}
@@ -218,12 +222,18 @@ export const SchedulesList = () => {
         })}
 
         {sortedSchedules.length === 0 ? <div className="c-no-result">No meetings found</div> : null}
-        <button className="c-btn u-margin-right" disabled={page === 0} onClick={goToPreviousPage}>
-          Previous
-        </button>
-        <button className="c-btn" disabled={!hasMore} onClick={goToNextPage}>
-          Next
-        </button>
+        <div className="u-flex u-justify-center">
+          <button
+            className="c-btn-alt u-margin-right"
+            disabled={page === 0}
+            onClick={goToPreviousPage}
+          >
+            Previous
+          </button>
+          <button className="c-btn-alt" disabled={!hasMore} onClick={goToNextPage}>
+            Next
+          </button>
+        </div>
       </div>
       <style jsx>
         {`
@@ -244,8 +254,7 @@ export const SchedulesList = () => {
             color: #fff;
           }
           .c-page-header--meetings {
-            background: linear-gradient(rgb(66 50 194 / 45%), rgb(66 50 194 / 45%)),
-              url(/header-recovery.jpg);
+            background: url(/header-recovery.jpeg);
             background-size: cover;
             padding: 2rem 0;
           }
