@@ -13,6 +13,7 @@ import Layout from "app/core/layouts/Layout"
 import getSchedulesWithMeetings from "app/schedules/queries/getSchedulesWithMeetings"
 import MeetingCard from "app/core/components/MeetingCard"
 import updateCheckInSchedule from "app/schedules/mutations/updateCheckInSchedule"
+import getMeetingCities from "app/meetings/queries/getMeetingCities"
 
 const ITEMS_PER_PAGE = 100
 
@@ -47,8 +48,24 @@ var orderedDaysStartingWithToday = week.reduce((acc, day, index) => {
 export const SchedulesList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
+  const [cityFilter, setCityFilter] = useState("")
+  const [dayFilter, setDayFilter] = useState("")
   const [{ schedules, hasMore }, { refetch }] = usePaginatedQuery(getSchedulesWithMeetings, {
     orderBy: { startTime: "asc" },
+    skip: ITEMS_PER_PAGE * page,
+    take: ITEMS_PER_PAGE,
+    where: {
+      meeting: {
+        city: {
+          contains: `%${cityFilter}%`,
+        },
+      },
+      dayOfWeek: {
+        contains: `%${dayFilter}%`,
+      },
+    },
+  })
+  const [{ meetings: cities }] = usePaginatedQuery(getMeetingCities, {
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
   })
@@ -59,6 +76,10 @@ export const SchedulesList = () => {
 
   const goToPreviousPage = () => router.push({ query: { page: page - 1 } })
   const goToNextPage = () => router.push({ query: { page: page + 1 } })
+
+  function handleFilterChange(e) {
+    setCityFilter(e.target.value)
+  }
 
   const handleMeetingCheckIn = async (meetingId) => {
     await updateCheckInScheduleMutation({ id: meetingId })
@@ -104,6 +125,42 @@ export const SchedulesList = () => {
         <a>
         </a>
       </Link> */}
+        <select value={cityFilter} onChange={handleFilterChange}>
+          <option value="">View All Cities</option>
+          {cities
+            .filter((city) => !!city.city)
+            .map((city) => (
+              <option key={`${city.city}-${city.state}`} value={city.city || ""}>
+                {city.city}
+              </option>
+            ))}
+        </select>
+        {/* <input value={cityFilter} onChange={handleFilterChange} placeholder="Search by city" /> */}
+
+        {/* list of day filters */}
+        <div className="c-days-options">
+          <button
+            key={day}
+            onClick={() => setDayFilter("")}
+            className={`c-day-options__option ${
+              dayFilter === "" ? "c-day-options__option--selected" : ""
+            }`}
+          >
+            All
+          </button>
+          {days.map((day) => (
+            <button
+              key={day}
+              onClick={() => setDayFilter(day)}
+              className={`c-day-options__option ${
+                dayFilter === day ? "c-day-options__option--selected" : ""
+              }`}
+            >
+              {day.slice(0, 1).toUpperCase()}
+            </button>
+          ))}
+        </div>
+
         {favorites.length > 0 ? (
           <>
             <h2>Favorites ({favorites.length})</h2>
@@ -142,6 +199,8 @@ export const SchedulesList = () => {
             </>
           )
         })}
+
+        {sortedSchedules.length === 0 ? <div>No meetings found</div> : null}
       </div>
 
       <button disabled={page === 0} onClick={goToPreviousPage}>

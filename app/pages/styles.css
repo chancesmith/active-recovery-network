@@ -131,3 +131,23 @@ code {
     flex-direction: column;
   }
 }
+
+/* select day option */
+.c-day-options {
+  display: flex;
+}
+.c-day-options__option {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-bottom: transparent 2px solid;
+}
+.c-day-options__option:hover {
+  border-bottom: #fc9803 2px solid;
+}
+.c-day-options__option--selected {
+  border-bottom: #fc9803 2px solid;
+  font-weight: 700;
+}
