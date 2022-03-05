@@ -48,8 +48,8 @@ var orderedDaysStartingWithToday = week.reduce((acc, day, index) => {
 export const SchedulesList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [cityFilter, setCityFilter] = useState("")
-  const [stateFilter, setStateFilter] = useState("")
+  const [cityFilter, setCityFilter] = useState("Jackson")
+  const [stateFilter, setStateFilter] = useState("TN")
   const [dayFilter, setDayFilter] = useState("")
   const [{ schedules, hasMore }, { refetch }] = usePaginatedQuery(getSchedulesWithMeetings, {
     // orderBy: { startTime: "asc" },
@@ -128,6 +128,10 @@ export const SchedulesList = () => {
 
   return (
     <div>
+      <span className="c-intro">Upcoming meetings for</span>{" "}
+      <h1 className="c-heading">
+        {cityFilter}, {stateFilter}
+      </h1>
       <div>
         {/* <Link href={Routes.ShowSchedulePage({ scheduleId: schedule.id, meetingId: meetingId })}>
         <a>
@@ -135,6 +139,7 @@ export const SchedulesList = () => {
       </Link> */}
         <select
           value={cityFilter && stateFilter ? `${cityFilter}-${stateFilter}` : ""}
+          className="c-select"
           onChange={handleFilterChange}
         >
           <option value="">View All Cities</option>
@@ -149,7 +154,7 @@ export const SchedulesList = () => {
         {/* <input value={cityFilter} onChange={handleFilterChange} placeholder="Search by city" /> */}
 
         {/* list of day filters */}
-        <div className="c-days-options">
+        <div className="c-day-options">
           <button
             key={day}
             onClick={() => setDayFilter("")}
@@ -215,13 +220,27 @@ export const SchedulesList = () => {
 
         {sortedSchedules.length === 0 ? <div>No meetings found</div> : null}
       </div>
-
-      <button disabled={page === 0} onClick={goToPreviousPage}>
+      <button className="c-btn u-margin-right" disabled={page === 0} onClick={goToPreviousPage}>
         Previous
       </button>
-      <button disabled={!hasMore} onClick={goToNextPage}>
+      <button className="c-btn" disabled={!hasMore} onClick={goToNextPage}>
         Next
       </button>
+      <style jsx>
+        {`
+          .c-heading {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0 0 2rem 0;
+          }
+          .c-intro {
+            font-size: 1rem;
+            text-align: center;
+            display: block;
+            margin: 2rem 0 0 0;
+          }
+        `}
+      </style>
     </div>
   )
 }
@@ -234,7 +253,6 @@ const AllMeetingsPage: BlitzPage = () => {
       </Head>
 
       <div>
-        <h1>Meetings</h1>
         <Suspense fallback={<div>Loading...</div>}>
           <SchedulesList />
         </Suspense>

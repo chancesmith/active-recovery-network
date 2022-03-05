@@ -161,21 +161,26 @@ code {
 /* select day option */
 .c-day-options {
   display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
 }
 .c-day-options__option {
   border: 0;
+  font-weight: 700;
+  font-size: 1.25rem;
   padding: 0;
   background: transparent;
   margin: 0 0.5rem;
   cursor: pointer;
   border-bottom: transparent 2px solid;
+  text-transform: uppercase;
 }
 .c-day-options__option:hover {
-  border-bottom: var(--primary) 2px solid;
+  border-bottom: var(--primary) 4px solid;
 }
 .c-day-options__option--selected {
-  border-bottom: var(--primary) 2px solid;
-  font-weight: 700;
+  border-bottom: var(--primary) 4px solid;
+  font-weight: 900;
 }
 
 .c-btn {
@@ -257,4 +262,15 @@ code {
 }
 .u-margin-left {
   margin-left: 0.25rem;
+}
+
+.c-select {
+  display: flex;
+  align-items: center;
+  border-radius: 0.75rem;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
