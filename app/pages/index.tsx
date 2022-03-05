@@ -55,7 +55,6 @@ const Home: BlitzPage = () => {
   return (
     <div className="container">
       <main>
-        <div className="logo">TODO: LOGO</div>
         <p>
           <strong>Welcome!</strong> sign-up and log-in.
         </p>

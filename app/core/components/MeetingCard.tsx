@@ -48,13 +48,17 @@ const MeetingCard = ({
           </div>
           <div className="c-meeting-card__actions">
             <a
-              className="button"
+              className="c-btn c-btn-link u-margin-right"
               href={`https://maps.google.com/?q=${schedule.meeting.address} ${schedule.meeting.city}, ${schedule.meeting.state}`}
             >
-              Directions
+              <span className="c-btn__inner">Directions</span>
             </a>
-            <button onClick={onClickCheckIn}>Check In</button>
-            <button onClick={onClickFavorite}>{isFavorite ? "Favorited 🤩" : "Favorite"}</button>
+            <button onClick={onClickCheckIn} className="c-btn u-margin-right">
+              Check In
+            </button>
+            <button onClick={onClickFavorite} className="c-btn">
+              {isFavorite ? "Favorited 🤩" : "Favorite"}
+            </button>
             {calcMeetingStatus(schedule.lastCheckIn)}
           </div>
         </div>

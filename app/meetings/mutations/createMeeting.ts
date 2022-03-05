@@ -4,6 +4,9 @@ import { z } from "zod"
 
 const CreateMeeting = z.object({
   name: z.string(),
+  address: z.string().optional(),
+  city: z.string().optional(),
+  state: z.string().optional(),
 })
 
 export default resolver.pipe(resolver.zod(CreateMeeting), resolver.authorize(), async (input) => {

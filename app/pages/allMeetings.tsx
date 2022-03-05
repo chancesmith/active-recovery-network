@@ -49,19 +49,25 @@ export const SchedulesList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
   const [cityFilter, setCityFilter] = useState("")
+  const [stateFilter, setStateFilter] = useState("")
   const [dayFilter, setDayFilter] = useState("")
   const [{ schedules, hasMore }, { refetch }] = usePaginatedQuery(getSchedulesWithMeetings, {
-    orderBy: { startTime: "asc" },
+    // orderBy: { startTime: "asc" },
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
     where: {
       meeting: {
-        city: {
-          contains: `%${cityFilter}%`,
+        AND: {
+          city: {
+            contains: `%${cityFilter}%`,
+          },
+          state: {
+            contains: `%${stateFilter}%`,
+          },
         },
       },
       dayOfWeek: {
-        contains: `%${dayFilter}%`,
+        contains: `%${dayFilter.toUpperCase()}%`,
       },
     },
   })
@@ -78,7 +84,9 @@ export const SchedulesList = () => {
   const goToNextPage = () => router.push({ query: { page: page + 1 } })
 
   function handleFilterChange(e) {
-    setCityFilter(e.target.value)
+    const value = e.target.value.split("-")
+    setCityFilter(value[0] || "")
+    setStateFilter(value[1] || "")
   }
 
   const handleMeetingCheckIn = async (meetingId) => {
@@ -125,13 +133,16 @@ export const SchedulesList = () => {
         <a>
         </a>
       </Link> */}
-        <select value={cityFilter} onChange={handleFilterChange}>
+        <select
+          value={cityFilter && stateFilter ? `${cityFilter}-${stateFilter}` : ""}
+          onChange={handleFilterChange}
+        >
           <option value="">View All Cities</option>
           {cities
             .filter((city) => !!city.city)
             .map((city) => (
-              <option key={`${city.city}-${city.state}`} value={city.city || ""}>
-                {city.city}
+              <option key={`${city.city}-${city.state}`} value={`${city.city}-${city.state}` || ""}>
+                {city.city}, {city.state}
               </option>
             ))}
         </select>
