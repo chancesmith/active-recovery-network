@@ -9,10 +9,17 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
       </Head>
       <Script src="https://kit.fontawesome.com/1f3310818b.js" crossOrigin="anonymous" />
       <header className="header">
-        <div className="logo">TODO: LOGO</div>
-        <div className="menu">TODO: Menu</div>
+        <div className="logo">
+          TODO: LOGO
+          {/* <a href="/">
+            <img src="/logo.png" alt="Active Recovery Network" />
+          </a> */}
+        </div>
+        <div className="menu">
+          <i className="fal fa-bars" />
+        </div>
       </header>
-      <div className="layout-wrapper">{children}</div>
+      <div className="">{children}</div>
     </>
   )
 }

@@ -128,15 +128,13 @@ export const SchedulesList = () => {
 
   return (
     <div>
-      <span className="c-intro">Upcoming meetings for</span>{" "}
-      <h1 className="c-heading">
-        {cityFilter}, {stateFilter}
-      </h1>
-      <div>
-        {/* <Link href={Routes.ShowSchedulePage({ scheduleId: schedule.id, meetingId: meetingId })}>
-        <a>
-        </a>
-      </Link> */}
+      <div className="c-page-header c-page-header--meetings">
+        <span className="c-intro">Upcoming meetings for</span>{" "}
+        <h1 className="c-heading">
+          {cityFilter}, {stateFilter}
+        </h1>
+      </div>
+      <div className="layout-wrapper layout-wrapper--top-overlay">
         <select
           value={cityFilter && stateFilter ? `${cityFilter}-${stateFilter}` : ""}
           className="c-select"
@@ -219,25 +217,41 @@ export const SchedulesList = () => {
         })}
 
         {sortedSchedules.length === 0 ? <div>No meetings found</div> : null}
+        <button className="c-btn u-margin-right" disabled={page === 0} onClick={goToPreviousPage}>
+          Previous
+        </button>
+        <button className="c-btn" disabled={!hasMore} onClick={goToNextPage}>
+          Next
+        </button>
       </div>
-      <button className="c-btn u-margin-right" disabled={page === 0} onClick={goToPreviousPage}>
-        Previous
-      </button>
-      <button className="c-btn" disabled={!hasMore} onClick={goToNextPage}>
-        Next
-      </button>
       <style jsx>
         {`
-          .c-heading {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 0 0 2rem 0;
+          .layout-wrapper--top-overlay {
+            margin: -5rem auto;
+            padding: 1.5rem 1.1rem;
+            background-color: white;
+            border-radius: 0.5rem;
+          }
+          .c-page-header {
+            height: 15rem;
+            color: #fff;
+          }
+          .c-page-header--meetings {
+            background: linear-gradient(rgb(66 50 194 / 45%), rgb(66 50 194 / 45%)),
+              url(/header-recovery.jpg);
+            background-size: cover;
+            padding: 2rem 0;
           }
           .c-intro {
             font-size: 1rem;
             text-align: center;
             display: block;
             margin: 2rem 0 0 0;
+          }
+          .c-heading {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0 0 2rem 0;
           }
         `}
       </style>
