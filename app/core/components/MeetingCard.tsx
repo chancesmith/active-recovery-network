@@ -5,6 +5,8 @@ import { calcMeetingStatus } from "../utils/calcMeetingStatus"
 interface MeetingCardProps {
   schedule: Schedule & { meeting: Meeting }
   onClickCheckIn: () => void
+  isFavorite: boolean
+  onClickFavorite: () => void
 }
 
 var getFormattedTime = function (fourDigitTime: number) {
@@ -18,24 +20,12 @@ var getFormattedTime = function (fourDigitTime: number) {
   return hours + ":" + minutes + amPm
 }
 
-const MeetingCard = ({ schedule, onClickCheckIn }: MeetingCardProps) => {
-  const favorites = JSON.parse(localStorage.getItem("favoriteSchedules") || "[]")
-  const [isFavorited, setisFavorited] = useState(favorites.includes(schedule.id))
-
-  function handleFavorited() {
-    // save to local storage as array of ids
-    const favorites = JSON.parse(localStorage.getItem("favoriteSchedules") || "[]")
-    const index = favorites.indexOf(schedule.id)
-    if (index === -1) {
-      favorites.push(schedule.id)
-      setisFavorited(true)
-    } else {
-      favorites.splice(index, 1)
-      setisFavorited(false)
-    }
-    localStorage.setItem("favoriteSchedules", JSON.stringify(favorites))
-  }
-
+const MeetingCard = ({
+  schedule,
+  onClickCheckIn,
+  isFavorite,
+  onClickFavorite,
+}: MeetingCardProps) => {
   return (
     <>
       <div className="c-meeting-card">
@@ -64,7 +54,7 @@ const MeetingCard = ({ schedule, onClickCheckIn }: MeetingCardProps) => {
               Directions
             </a>
             <button onClick={onClickCheckIn}>Check In</button>
-            <button onClick={handleFavorited}>{isFavorited ? "Favorited 🤩" : "Favorite"}</button>
+            <button onClick={onClickFavorite}>{isFavorite ? "Favorited 🤩" : "Favorite"}</button>
             {calcMeetingStatus(schedule.lastCheckIn)}
           </div>
         </div>
