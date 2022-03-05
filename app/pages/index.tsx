@@ -4,7 +4,6 @@ import Layout from "app/core/layouts/Layout"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 import logout from "app/auth/mutations/logout"
 import logo from "public/logo.png"
-import { Meeting } from "./meetings/[meetingId]"
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -58,11 +57,11 @@ const Home: BlitzPage = () => {
         <p>
           <strong>Welcome!</strong> sign-up and log-in.
         </p>
-        <div className="buttons" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+        {/* <div className="buttons" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
           <Suspense fallback="Loading...">
             <UserInfo />
           </Suspense>
-        </div>
+        </div> */}
         <Link href="/allMeetings">Meetings</Link>
       </main>
 

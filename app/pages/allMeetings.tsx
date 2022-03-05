@@ -225,8 +225,6 @@ export const SchedulesList = () => {
 }
 
 const AllMeetingsPage: BlitzPage = () => {
-  const meetingId = useParam("meetingId", "number")
-
   return (
     <>
       <Head>
@@ -235,12 +233,6 @@ const AllMeetingsPage: BlitzPage = () => {
 
       <div>
         <h1>Meetings</h1>
-        <p>
-          <Link href={Routes.NewMeetingPage()}>
-            <a>Create Meeting</a>
-          </Link>
-        </p>
-
         <Suspense fallback={<div>Loading...</div>}>
           <SchedulesList />
         </Suspense>
@@ -249,7 +241,7 @@ const AllMeetingsPage: BlitzPage = () => {
   )
 }
 
-AllMeetingsPage.authenticate = true
+AllMeetingsPage.authenticate = false
 AllMeetingsPage.getLayout = (page) => <Layout>{page}</Layout>
 
 export default AllMeetingsPage
