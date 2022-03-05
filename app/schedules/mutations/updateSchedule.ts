@@ -5,7 +5,7 @@ import { z } from "zod"
 const UpdateSchedule = z.object({
   id: z.number(),
   dayOfWeek: z.string(),
-  startTime: z.string(),
+  startTime: z.number(),
 })
 
 export default resolver.pipe(

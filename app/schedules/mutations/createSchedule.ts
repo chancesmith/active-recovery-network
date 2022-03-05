@@ -5,7 +5,7 @@ import { z } from "zod"
 const CreateSchedule = z.object({
   meetingId: z.number(),
   dayOfWeek: z.string(),
-  startTime: z.string(),
+  startTime: z.number(),
 })
 
 export default resolver.pipe(resolver.zod(CreateSchedule), resolver.authorize(), async (input) => {

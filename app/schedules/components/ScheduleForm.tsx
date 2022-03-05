@@ -12,7 +12,12 @@ export function ScheduleForm<S extends z.ZodType<any, any>>(props: FormProps<S>)
         label="Day Of Week"
         options={["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]}
       />
-      <LabeledTextField name="startTime" label="Start Time" placeholder="Start Time" />
+      <LabeledTextField
+        type="number"
+        name="startTime"
+        label="Start Time"
+        placeholder="Start Time"
+      />
     </Form>
   )
 }

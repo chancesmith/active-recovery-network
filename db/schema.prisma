@@ -88,7 +88,7 @@ model Schedule {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   dayOfWeek String
-  startTime String
+  startTime Int      @default(0100)
   meeting   Meeting  @relation(fields: [meetingId], references: [id])
   meetingId Int
 }
