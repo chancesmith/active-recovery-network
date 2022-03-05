@@ -40,7 +40,12 @@ const MeetingCard = ({ schedule, onClickCheckIn }: MeetingCardProps) => {
             </address>
           </div>
           <div className="c-meeting-card__actions">
-            <button>Directions</button>
+            <a
+              className="button"
+              href={`https://maps.google.com/?q=${schedule.meeting.address} ${schedule.meeting.city}, ${schedule.meeting.state}`}
+            >
+              Directions
+            </a>
             <button onClick={onClickCheckIn}>Check In</button>
             {calcMeetingStatus(schedule.lastCheckIn)}
           </div>
