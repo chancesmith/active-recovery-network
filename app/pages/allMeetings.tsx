@@ -139,7 +139,6 @@ export const SchedulesList = () => {
         )}
       </div>
       <div className="layout-wrapper layout-wrapper--top-overlay">
-        {cityFilter + " " + stateFilter + " " + dayFilter}
         <select
           value={cityFilter && stateFilter ? `${cityFilter}-${stateFilter}` : ""}
           className="c-select"
