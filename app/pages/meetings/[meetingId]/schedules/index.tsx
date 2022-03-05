@@ -25,7 +25,9 @@ export const SchedulesList = () => {
         {schedules.map((schedule) => (
           <li key={schedule.id}>
             <Link href={Routes.ShowSchedulePage({ scheduleId: schedule.id })}>
-              <a>{schedule.name}</a>
+              <a>
+                {schedule.dayOfWeek} {schedule.startTime}
+              </a>
             </Link>
           </li>
         ))}
