@@ -5,6 +5,9 @@ import { z } from "zod"
 const UpdateMeeting = z.object({
   id: z.number(),
   name: z.string(),
+  address: z.string().optional(),
+  city: z.string().optional(),
+  state: z.string().optional(),
 })
 
 export default resolver.pipe(

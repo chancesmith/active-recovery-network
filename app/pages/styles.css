@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0 20px 60px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main p {
+  font-size: 1.2rem;
+}
+
+p {
+  text-align: center;
+}
+
+footer {
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fc9803;
+}
+
+footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  color: #f4f4f4;
+  text-decoration: none;
+}
+
+.logo {
+  margin-bottom: 2rem;
+}
+
+.logo img {
+  width: 300px;
+}
+
+.buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+}
+.button {
+  font-size: 1rem;
+  background-color: #fc9803;
+  padding: 1rem 2rem;
+  color: #f4f4f4;
+  text-align: center;
+}
+
+.button.small {
+  padding: 0.5rem 1rem;
+}
+
+.button:hover {
+  background-color: #fc9803;
+}
+
+.button-outline {
+  border: 2px solid #fc9803;
+  padding: 1rem 2rem;
+  color: #fc9803;
+  text-align: center;
+}
+
+.button-outline:hover {
+  border-color: #fc9803;
+  color: #fc9803;
+}
+
+pre {
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+code {
+  font-size: 0.9rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}

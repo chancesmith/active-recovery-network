@@ -65,30 +65,30 @@ model Token {
 // }
 
 model Meeting {
-  id          Int        @id @default(autoincrement())
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  name        String
-  link        String?
-  email       String?
-  phone       String?
-  status      String     @default("ACTIVE")
-  placeName   String?
-  address     String?
-  state       String?
-  city        String?
-  zip         String?
-  country     String     @default("US")
-  schedules   Schedule[]
-  lastCheckIn DateTime   @default(now())
+  id        Int        @id @default(autoincrement())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  name      String
+  link      String?
+  email     String?
+  phone     String?
+  status    String     @default("ACTIVE")
+  placeName String?
+  address   String?
+  state     String?
+  city      String?
+  zip       String?
+  country   String     @default("US")
+  schedules Schedule[]
 }
 
 model Schedule {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  dayOfWeek String
-  startTime Int      @default(0100)
-  meeting   Meeting  @relation(fields: [meetingId], references: [id])
-  meetingId Int
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  dayOfWeek   String
+  startTime   Int      @default(0100)
+  lastCheckIn DateTime @default(now())
+  meeting     Meeting  @relation(fields: [meetingId], references: [id])
+  meetingId   Int
 }
