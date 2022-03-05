@@ -1192,7 +1192,7 @@ meetings.forEach((meeting) => {
   const { Day, Time, Place, Name } = meeting
   const newMeeting = newMeetings.find((newMeeting) => newMeeting.name === Name)
   if (newMeeting) {
-    newMeeting.schedules.push({ dayOfWeek: Day, startTime: Time })
+    newMeeting.schedules.push({ dayOfWeek: Day.toUpperCase(), startTime: Time })
   }
 })
 

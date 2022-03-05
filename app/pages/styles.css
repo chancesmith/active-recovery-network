@@ -87,6 +87,10 @@ footer a {
   margin-bottom: 2rem;
   position: absolute;
   left: 1rem;
+  top: 0.4rem;
+}
+.logo a img {
+  width: 10rem;
 }
 .menu {
   display: flex;

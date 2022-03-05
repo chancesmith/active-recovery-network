@@ -135,6 +135,7 @@ export const SchedulesList = () => {
         </h1>
       </div>
       <div className="layout-wrapper layout-wrapper--top-overlay">
+        {cityFilter + " " + stateFilter + " " + dayFilter}
         <select
           value={cityFilter && stateFilter ? `${cityFilter}-${stateFilter}` : ""}
           className="c-select"
@@ -216,7 +217,7 @@ export const SchedulesList = () => {
           )
         })}
 
-        {sortedSchedules.length === 0 ? <div>No meetings found</div> : null}
+        {sortedSchedules.length === 0 ? <div className="c-no-result">No meetings found</div> : null}
         <button className="c-btn u-margin-right" disabled={page === 0} onClick={goToPreviousPage}>
           Previous
         </button>
@@ -226,6 +227,12 @@ export const SchedulesList = () => {
       </div>
       <style jsx>
         {`
+          .c-no-result {
+            text-align: center;
+            background: #f5f5f5;
+            padding: 1rem;
+            margin: 1rem 0;
+          }
           .layout-wrapper--top-overlay {
             margin: -5rem auto;
             padding: 1.5rem 1.1rem;
