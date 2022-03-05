@@ -1,4 +1,6 @@
-// import db from "./index"
+import db from "./index"
+
+import newMeetings from "./defaultMeetings"
 
 /*
  * This seed function is executed when you run `blitz db seed`.
@@ -8,9 +10,22 @@
  * realistic data.
  */
 const seed = async () => {
-  // for (let i = 0; i < 5; i++) {
-  //   await db.project.create({ data: { name: "Project " + i } })
-  // }
+  newMeetings.forEach(async (meeting) => {
+    const { name, address, description, city, state, schedules, ...restOfData } = meeting
+    await db.meeting.create({
+      data: {
+        name: name || "delete----me",
+        address,
+        description,
+        city,
+        state,
+        schedules: {
+          // @ts-ignore
+          create: [...schedules],
+        },
+      },
+    })
+  })
 }
 
 export default seed

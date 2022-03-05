@@ -234,6 +234,7 @@ const AllMeetingsPage: BlitzPage = () => {
       </Head>
 
       <div>
+        <h1>Meetings</h1>
         <p>
           <Link href={Routes.NewMeetingPage()}>
             <a>Create Meeting</a>

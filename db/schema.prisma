@@ -65,21 +65,22 @@ model Token {
 // }
 
 model Meeting {
-  id        Int        @id @default(autoincrement())
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  name      String
-  link      String?
-  email     String?
-  phone     String?
-  status    String     @default("ACTIVE")
-  placeName String?
-  address   String?
-  state     String?
-  city      String?
-  zip       String?
-  country   String     @default("US")
-  schedules Schedule[]
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  name        String
+  link        String?
+  email       String?
+  phone       String?
+  status      String     @default("ACTIVE")
+  placeName   String?
+  address     String?
+  state       String?
+  city        String?
+  zip         String?
+  country     String     @default("US")
+  description String?
+  schedules   Schedule[]
 }
 
 model Schedule {

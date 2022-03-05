@@ -10,6 +10,7 @@ export function MeetingForm<S extends z.ZodType<any, any>>(props: FormProps<S>) 
       {/* <LabeledTextField name="link" label="Link" placeholder="Link" /> */}
       {/* <LabeledTextField name="phone" label="Phone" placeholder="Phone" />
       <LabeledTextField name="email" label="Email" placeholder="Email" /> */}
+      <LabeledTextField name="placeName" label="Place" placeholder="name of meeting place" />
       <LabeledTextField name="address" label="Address" placeholder="Address" required />
       <LabeledTextField name="city" label="City" placeholder="City" required />
       <LabeledTextField name="state" label="State" placeholder="State" />

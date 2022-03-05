@@ -5,6 +5,7 @@ import { z } from "zod"
 const UpdateMeeting = z.object({
   id: z.number(),
   name: z.string(),
+  placeName: z.string().optional(),
   address: z.string().optional(),
   city: z.string().optional(),
   state: z.string().optional(),
