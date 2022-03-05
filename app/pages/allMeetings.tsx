@@ -292,6 +292,6 @@ const AllMeetingsPage: BlitzPage = () => {
 }
 
 AllMeetingsPage.authenticate = false
-AllMeetingsPage.getLayout = (page) => <Layout>{page}</Layout>
+AllMeetingsPage.getLayout = (page) => <Layout title="All Meetings">{page}</Layout>
 
 export default AllMeetingsPage

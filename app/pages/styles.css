@@ -28,6 +28,14 @@ h3 {
   margin: 0 auto;
 }
 
+.layout-other {
+  background-color: #6266ea;
+  min-height: 900px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

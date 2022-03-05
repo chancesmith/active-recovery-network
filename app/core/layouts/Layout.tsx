@@ -18,7 +18,10 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
           <i className="fal fa-bars" />
         </div>
       </header>
-      <div className="">{children}</div>
+
+      <div className={`${title === "All Meetings" ? "" : "layout-wrapper layout-other"}`}>
+        {children}
+      </div>
     </>
   )
 }
