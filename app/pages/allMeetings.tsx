@@ -198,7 +198,9 @@ export const SchedulesList = () => {
           }
           return (
             <>
-              {dayOfWeek.day && dayOfWeek.count === 0 ? <h2>{dayOfWeek.day}</h2> : null}
+              {dayOfWeek.day && dayOfWeek.count === 0 ? (
+                <h2>{dayOfWeek.day.toUpperCase()}</h2>
+              ) : null}
 
               <MeetingCard
                 key={schedule.id}
