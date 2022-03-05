@@ -1,5 +1,5 @@
 import { Meeting, Schedule } from "@prisma/client"
-import React from "react"
+import React, { useState } from "react"
 import { calcMeetingStatus } from "../utils/calcMeetingStatus"
 
 interface MeetingCardProps {
@@ -19,6 +19,23 @@ var getFormattedTime = function (fourDigitTime: number) {
 }
 
 const MeetingCard = ({ schedule, onClickCheckIn }: MeetingCardProps) => {
+  const favorites = JSON.parse(localStorage.getItem("favoriteSchedules") || "[]")
+  const [isFavorited, setisFavorited] = useState(favorites.includes(schedule.id))
+
+  function handleFavorited() {
+    // save to local storage as array of ids
+    const favorites = JSON.parse(localStorage.getItem("favoriteSchedules") || "[]")
+    const index = favorites.indexOf(schedule.id)
+    if (index === -1) {
+      favorites.push(schedule.id)
+      setisFavorited(true)
+    } else {
+      favorites.splice(index, 1)
+      setisFavorited(false)
+    }
+    localStorage.setItem("favoriteSchedules", JSON.stringify(favorites))
+  }
+
   return (
     <>
       <div className="c-meeting-card">
@@ -47,6 +64,7 @@ const MeetingCard = ({ schedule, onClickCheckIn }: MeetingCardProps) => {
               Directions
             </a>
             <button onClick={onClickCheckIn}>Check In</button>
+            <button onClick={handleFavorited}>{isFavorited ? "Favorited 🤩" : "Favorite"}</button>
             {calcMeetingStatus(schedule.lastCheckIn)}
           </div>
         </div>
