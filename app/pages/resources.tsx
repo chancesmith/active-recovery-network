@@ -2,7 +2,7 @@ import { Suspense } from "react"
 import { Link, BlitzPage } from "blitz"
 import Layout from "app/core/layouts/Layout"
 
-const Home: BlitzPage = () => {
+const Resources: BlitzPage = () => {
   return (
     <div className="container">
       <main>
@@ -21,7 +21,7 @@ const Home: BlitzPage = () => {
   )
 }
 
-Home.suppressFirstRenderFlicker = true
-Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
+Resources.suppressFirstRenderFlicker = true
+Resources.getLayout = (page) => <Layout title="Resources">{page}</Layout>
 
-export default Home
+export default Resources
