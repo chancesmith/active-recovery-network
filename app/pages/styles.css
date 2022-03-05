@@ -2,8 +2,8 @@
 
 /*  root colors */
 :root {
-  --primary: #fc9803;
-  --primary-dark: #df8415;
+  --primary: #6266ea;
+  --primary-dark: #4f53bb;
 }
 
 html,
@@ -227,6 +227,19 @@ code {
 .c-btn-link {
   text-decoration: none;
   display: flex;
+}
+
+.c-btn-icon {
+  background-color: transparent;
+  border-color: transparent;
+  text-decoration: none;
+  display: flex;
+}
+.c-btn-icon:hover,
+.c-btn-icon:focus,
+.c-btn-icon:active {
+  background-color: transparent;
+  border-color: transparent;
 }
 
 /* utilties */

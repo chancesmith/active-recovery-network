@@ -55,7 +55,7 @@ const Home: BlitzPage = () => {
     <div className="container">
       <main>
         <p>
-          <strong>Welcome!</strong> sign-up and log-in.
+          <strong>Welcome!</strong>
         </p>
         {/* <div className="buttons" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
           <Suspense fallback="Loading...">

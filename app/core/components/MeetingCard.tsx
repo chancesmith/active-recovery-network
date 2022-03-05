@@ -1,5 +1,7 @@
 import { Meeting, Schedule } from "@prisma/client"
+import moment from "moment"
 import React, { useState } from "react"
+import { MeetingStatus } from "../CONSTANTS"
 import { calcMeetingStatus } from "../utils/calcMeetingStatus"
 
 interface MeetingCardProps {
@@ -56,10 +58,26 @@ const MeetingCard = ({
             <button onClick={onClickCheckIn} className="c-btn u-margin-right">
               Check In
             </button>
-            <button onClick={onClickFavorite} className="c-btn">
-              {isFavorite ? "Favorited 🤩" : "Favorite"}
+            <button onClick={onClickFavorite} className="c-btn c-btn-icon">
+              {isFavorite ? (
+                <i className={`fa fa-light fa-heart c-meeting-card__favorite--favorited`} />
+              ) : (
+                <i className={`fal fa-solid fa-heart c-meeting-card__favorite`} />
+              )}
             </button>
-            {calcMeetingStatus(schedule.lastCheckIn)}
+            <div
+              className={`c-meeting-card__status ${
+                calcMeetingStatus(schedule.lastCheckIn) === MeetingStatus.STALE
+                  ? "c-meeting-card__status--stale"
+                  : ""
+              } ${
+                calcMeetingStatus(schedule.lastCheckIn) === MeetingStatus.INACTIVE
+                  ? "c-meeting-card__status--inactive"
+                  : ""
+              }`}
+            >
+              {moment(schedule.lastCheckIn).fromNow()}
+            </div>
           </div>
         </div>
       </div>
@@ -94,6 +112,21 @@ const MeetingCard = ({
         .c-meeting-card__place {
         }
         .c-meeting-card__address {
+        }
+        .c-meeting-card__status {
+          background: green;
+        }
+        .c-meeting-card__favorite {
+          color: red;
+        }
+        .c-meeting-card__favorite--favorited {
+          color: red;
+        }
+        .c-meeting-card__status--stale {
+          background: orange;
+        }
+        .c-meeting-card__status--inactive {
+          background: grey;
         }
         .c-meeting-card__actions {
           display: flex;
