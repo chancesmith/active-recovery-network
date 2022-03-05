@@ -36,12 +36,13 @@ export const EditMeeting = () => {
           // schema={UpdateMeeting}
           initialValues={meeting}
           onSubmit={async (values) => {
+            // const {schedules, ...resetOfValues} = values
             try {
               const updated = await updateMeetingMutation({
                 id: meeting.id,
                 ...values,
               })
-              await setQueryData(updated)
+              await setQueryData({ ...updated, schedules: meeting.schedules })
               router.push(Routes.ShowMeetingPage({ meetingId: updated.id }))
             } catch (error: any) {
               console.error(error)
