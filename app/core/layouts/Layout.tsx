@@ -14,9 +14,9 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
             <img src="/recovery-today-logo.png" alt="Active Recovery Network" />
           </a>
         </div>
-        <div className="menu">
+        {/* <div className="menu">
           <i className="fal fa-bars" />
-        </div>
+        </div> */}
       </header>
 
       <div className={`${title === "All Meetings" ? "" : "layout-wrapper layout-other"}`}>
