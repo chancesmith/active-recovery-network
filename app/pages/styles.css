@@ -184,15 +184,15 @@ code {
   background: var(--primary);
   transition: all 0.4s ease;
   color: white;
-  padding: 0.1rem 0.8rem;
-  min-height: 0.5rem;
+  padding: 0.3rem 1rem;
+  min-height: 0.9rem;
   font-weight: bold;
   text-transform: capitalize;
   text-align: center;
   /* transition: all $anim-fade-quick $anim-ease; */
   border-radius: 26px;
   white-space: normal;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 
 .c-btn__inner {
@@ -232,7 +232,11 @@ code {
   border-color: transparent;
   text-decoration: none;
   display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-size: 1.2rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
 }
 .c-btn-icon:hover,
 .c-btn-icon:focus,
@@ -243,14 +247,14 @@ code {
 
 /* utilties */
 .u-margin-bottom {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 .u-margin-top {
-  margin-top: 0.75rem;
+  margin-top: 0.25rem;
 }
 .u-margin-right {
-  margin-right: 0.75rem;
+  margin-right: 0.25rem;
 }
 .u-margin-left {
-  margin-left: 0.75rem;
+  margin-left: 0.25rem;
 }

@@ -126,7 +126,7 @@ const MeetingCard = ({
           padding-left: 1rem;
         }
         .c-meeting-card__city-state {
-          font-size: 1.2rem;
+          font-size: 2rem;
           font-weight: 800;
           color: #4232c2;
         }
