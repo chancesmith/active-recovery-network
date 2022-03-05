@@ -19,7 +19,7 @@ model User {
   name           String?
   email          String   @unique
   hashedPassword String?
-  role           String   @default("USER")
+  role           String   @default("MEMBER")
 
   tokens   Token[]
   sessions Session[]
@@ -63,3 +63,32 @@ model Token {
 // enum TokenType {
 //   RESET_PASSWORD
 // }
+
+model Meeting {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  name        String
+  link        String?
+  email       String?
+  phone       String?
+  status      String     @default("ACTIVE")
+  placeName   String?
+  address     String?
+  state       String?
+  city        String?
+  zip         String?
+  country     String     @default("US")
+  schedules   Schedule[]
+  lastCheckIn DateTime   @default(now())
+}
+
+model Schedule {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  dayOfWeek String
+  startTime String
+  meeting   Meeting  @relation(fields: [meetingId], references: [id])
+  meetingId Int
+}

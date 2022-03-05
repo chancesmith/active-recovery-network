@@ -1,9 +1,10 @@
 import { Suspense } from "react"
-import { Image, Link, BlitzPage, useMutation, Routes } from "blitz"
+import { Link, BlitzPage, useMutation, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
 import logout from "app/auth/mutations/logout"
 import logo from "public/logo.png"
+import { Meeting } from "./meetings/[meetingId]"
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -54,79 +55,21 @@ const Home: BlitzPage = () => {
   return (
     <div className="container">
       <main>
-        <div className="logo">
-          <Image src={logo} alt="blitzjs" />
-        </div>
+        <div className="logo">TODO: LOGO</div>
         <p>
-          <strong>Congrats!</strong> Your app is ready, including user sign-up and log-in.
+          <strong>Welcome!</strong> sign-up and log-in.
         </p>
         <div className="buttons" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
           <Suspense fallback="Loading...">
             <UserInfo />
           </Suspense>
         </div>
-        <p>
-          <strong>
-            To add a new model to your app, <br />
-            run the following in your terminal:
-          </strong>
-        </p>
-        <pre>
-          <code>blitz generate all project name:string</code>
-        </pre>
-        <div style={{ marginBottom: "1rem" }}>(And select Yes to run prisma migrate)</div>
-        <div>
-          <p>
-            Then <strong>restart the server</strong>
-          </p>
-          <pre>
-            <code>Ctrl + c</code>
-          </pre>
-          <pre>
-            <code>blitz dev</code>
-          </pre>
-          <p>
-            and go to{" "}
-            <Link href="/projects">
-              <a>/projects</a>
-            </Link>
-          </p>
-        </div>
-        <div className="buttons" style={{ marginTop: "5rem" }}>
-          <a
-            className="button"
-            href="https://blitzjs.com/docs/getting-started?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-          <a
-            className="button-outline"
-            href="https://github.com/blitz-js/blitz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github Repo
-          </a>
-          <a
-            className="button-outline"
-            href="https://discord.blitzjs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discord Community
-          </a>
-        </div>
+        <Link href="/meetings">Meetings</Link>
       </main>
 
       <footer>
-        <a
-          href="https://blitzjs.com?utm_source=blitz-new&utm_medium=app-template&utm_campaign=blitz-new"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by Blitz.js
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          Active Recovery Network ®
         </a>
       </footer>
 
@@ -178,7 +121,7 @@ const Home: BlitzPage = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color: #45009d;
+          background-color: #fc9803;
         }
 
         footer a {
@@ -207,7 +150,7 @@ const Home: BlitzPage = () => {
         }
         .button {
           font-size: 1rem;
-          background-color: #6700eb;
+          background-color: #fc9803;
           padding: 1rem 2rem;
           color: #f4f4f4;
           text-align: center;
@@ -218,19 +161,19 @@ const Home: BlitzPage = () => {
         }
 
         .button:hover {
-          background-color: #45009d;
+          background-color: #fc9803;
         }
 
         .button-outline {
-          border: 2px solid #6700eb;
+          border: 2px solid #fc9803;
           padding: 1rem 2rem;
-          color: #6700eb;
+          color: #fc9803;
           text-align: center;
         }
 
         .button-outline:hover {
-          border-color: #45009d;
-          color: #45009d;
+          border-color: #fc9803;
+          color: #fc9803;
         }
 
         pre {
