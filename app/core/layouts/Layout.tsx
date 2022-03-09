@@ -1,4 +1,4 @@
-import { Head, BlitzLayout, Script } from "blitz"
+import { Head, BlitzLayout, Script, Image } from "blitz"
 
 const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
   return (
@@ -11,7 +11,7 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
       <header className="header">
         <div className="logo">
           <a href="/">
-            <img src="/recovery-today-logo.png" alt="Active Recovery Network" />
+            <Image src="/recovery-today-logo.png" alt="Active Recovery Network" />
           </a>
         </div>
         {/* <div className="menu">
