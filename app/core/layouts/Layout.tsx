@@ -11,7 +11,12 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
       <header className="header">
         <div className="logo">
           <a href="/">
-            <Image src="/recovery-today-logo.png" alt="Active Recovery Network" />
+            <Image
+              src="/recovery-today-logo.png"
+              alt="Active Recovery Network"
+              width="160"
+              height="30"
+            />
           </a>
         </div>
         {/* <div className="menu">
