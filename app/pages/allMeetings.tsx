@@ -192,7 +192,7 @@ export const SchedulesList = () => {
             <hr />
           </>
         ) : null}
-        {sortedSchedules.map((schedule) => {
+        {sortedSchedules.map((schedule, index) => {
           if (dayOfWeek.day !== schedule.dayOfWeek) {
             dayOfWeek.day = schedule.dayOfWeek
             dayOfWeek.count = 0
@@ -202,7 +202,9 @@ export const SchedulesList = () => {
           return (
             <>
               {dayOfWeek.day && dayOfWeek.count === 0 ? (
-                <h2>{dayOfWeek.day.toUpperCase()}</h2>
+                <h2>
+                  {dayOfWeek.day.toUpperCase()} {index === 0 ? "(Today)" : ""}
+                </h2>
               ) : null}
 
               <MeetingCard
