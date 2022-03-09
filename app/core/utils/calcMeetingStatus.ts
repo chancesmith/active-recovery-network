@@ -10,9 +10,11 @@ export function calcMeetingStatus(lastCheckIn: Date) {
   // if difference is greater than 1 min, then MeetingStatus.STALE
   // if difference is less than 1 min, then MeetingStatus.ACTIVE
   const diff = new Date().getTime() - lastCheckIn.getTime()
-  if (diff > 5 * 60 * 1000) {
+  // 30 days in milliseconds
+  if (diff > 30 * 24 * 60 * 60 * 1000) {
     return MeetingStatus.INACTIVE
-  } else if (diff > 1 * 60 * 1000) {
+    // 60 days in milliseconds
+  } else if (diff > 60 * 24 * 60 * 60 * 1000) {
     return MeetingStatus.STALE
   } else {
     return MeetingStatus.ACTIVE
