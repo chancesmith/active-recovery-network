@@ -14,6 +14,7 @@ import getSchedulesWithMeetings from "app/schedules/queries/getSchedulesWithMeet
 import MeetingCard from "app/core/components/MeetingCard"
 import updateCheckInSchedule from "app/schedules/mutations/updateCheckInSchedule"
 import getMeetingCities from "app/meetings/queries/getMeetingCities"
+import React from "react"
 
 const ITEMS_PER_PAGE = 100
 
@@ -52,7 +53,7 @@ export const SchedulesList = () => {
   const [stateFilter, setStateFilter] = useState("TN")
   const [dayFilter, setDayFilter] = useState("")
   const [{ schedules, hasMore }, { refetch }] = usePaginatedQuery(getSchedulesWithMeetings, {
-    // orderBy: { startTime: "asc" },
+    orderBy: { startTime: "asc" },
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
     where: {
@@ -107,19 +108,14 @@ export const SchedulesList = () => {
     setFavorites(favorites)
   }
 
-  const sortedSchedules = schedules
-    .sort((a, b) => {
-      if (a.startTime <= currentMilitaryTime) {
-        return -1
-      } else {
-        return 1
-      }
-    })
-    .sort((a, b) => {
+  // memoize the list of schedules
+  const sortedSchedules = React.useMemo(() => {
+    return schedules.sort((a, b) => {
       let day1 = a.dayOfWeek.toLowerCase()
       let day2 = b.dayOfWeek.toLowerCase()
       return orderedDaysStartingWithToday[day1] - orderedDaysStartingWithToday[day2]
     })
+  }, [schedules])
 
   let dayOfWeek = {
     count: 0,
