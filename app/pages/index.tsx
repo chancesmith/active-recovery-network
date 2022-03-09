@@ -57,18 +57,13 @@ const Home: BlitzPage = () => {
         <p>
           <strong>Welcome!</strong>
         </p>
+        <Link href="/allMeetings">Meetings</Link>
+        <Link href="/resources">Resources</Link>
         {/* <div className="buttons" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
           <Suspense fallback="Loading...">
             <UserInfo />
           </Suspense>
         </div> */}
-        <Link href="/allMeetings">Meetings</Link>
-        <Link href="/resources">Resources</Link>
-        <Link href={Routes.LoginPage()}>
-          <a className="button small">
-            <strong>Login</strong>
-          </a>
-        </Link>
       </main>
 
       <footer>
