@@ -182,6 +182,17 @@ code {
   }
 }
 
+.loading {
+  background: #fff;
+  border-radius: 2rem;
+  padding: 3rem 5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10rem auto;
+  width: 90%;
+  max-width: 25rem;
+}
+
 /* select day option */
 .c-day-options {
   display: flex;
