@@ -203,7 +203,11 @@ export const SchedulesList = () => {
             <>
               {dayOfWeek.day && dayOfWeek.count === 0 ? (
                 <h2>
-                  {dayOfWeek.day.toUpperCase()} {index === 0 ? "(Today)" : ""}
+                  {dayOfWeek.day.toUpperCase()}{" "}
+                  {new Date().toLocaleDateString("en-US", { weekday: "long" }).toLowerCase() ===
+                    dayOfWeek.day.toLowerCase() && index === 0
+                    ? "(Today)"
+                    : ""}
                 </h2>
               ) : null}
 
