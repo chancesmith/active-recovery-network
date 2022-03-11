@@ -52,7 +52,7 @@ export const SchedulesList = () => {
   const [cityFilter, setCityFilter] = useState("Jackson")
   const [stateFilter, setStateFilter] = useState("TN")
   // todays day name as a string
-  const today = days[todayIndex]
+  const today = days?.[todayIndex] || "monday"
   const [dayFilter, setDayFilter] = useState(today)
   const [{ schedules, hasMore }, { refetch }] = usePaginatedQuery(getSchedulesWithMeetings, {
     orderBy: { startTime: "asc" },
