@@ -49,8 +49,10 @@ var orderedDaysStartingWithToday = week.reduce((acc, day, index) => {
 export const SchedulesList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [cityFilter, setCityFilter] = useState("Jackson")
-  const [stateFilter, setStateFilter] = useState("TN")
+  const defaultCity = localStorage.getItem("cityFilter") || "Jackson"
+  const defaultState = localStorage.getItem("stateFilter") || "TN"
+  const [cityFilter, setCityFilter] = useState(defaultCity)
+  const [stateFilter, setStateFilter] = useState(defaultState)
   // todays day name as a string
   const today = days?.[todayIndex] || "monday"
   const [dayFilter, setDayFilter] = useState(today)
@@ -90,6 +92,10 @@ export const SchedulesList = () => {
     const value = e.target.value.split("-")
     setCityFilter(value[0] || "")
     setStateFilter(value[1] || "")
+    // save filters to local storage
+    if (value[0] === "" || value[1] === "") return
+    localStorage.setItem("cityFilter", value[0])
+    localStorage.setItem("stateFilter", value[1])
   }
 
   const handleMeetingCheckIn = async (meetingId) => {
