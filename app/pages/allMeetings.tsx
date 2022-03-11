@@ -51,7 +51,9 @@ export const SchedulesList = () => {
   const page = Number(router.query.page) || 0
   const [cityFilter, setCityFilter] = useState("Jackson")
   const [stateFilter, setStateFilter] = useState("TN")
-  const [dayFilter, setDayFilter] = useState("")
+  // todays day name as a string
+  const today = days[todayIndex]
+  const [dayFilter, setDayFilter] = useState(today)
   const [{ schedules, hasMore }, { refetch }] = usePaginatedQuery(getSchedulesWithMeetings, {
     orderBy: { startTime: "asc" },
     skip: ITEMS_PER_PAGE * page,
@@ -153,7 +155,7 @@ export const SchedulesList = () => {
 
         {/* list of day filters */}
         <div className="c-day-options">
-          <button
+          {/* <button
             key={day}
             onClick={() => setDayFilter("")}
             className={`c-day-options__option ${
@@ -161,7 +163,7 @@ export const SchedulesList = () => {
             }`}
           >
             All
-          </button>
+          </button> */}
           {days.map((day) => (
             <button
               key={day}

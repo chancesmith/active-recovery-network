@@ -203,18 +203,18 @@ code {
   border: 0;
   font-weight: 700;
   font-size: 1.25rem;
-  padding: 0;
+  padding: 0 8px;
   background: transparent;
   margin: 0 0.5rem;
   cursor: pointer;
-  border-bottom: transparent 2px solid;
   text-transform: uppercase;
+  border-bottom: transparent 4px solid;
 }
 .c-day-options__option:hover {
-  border-bottom: var(--primary) 4px solid;
+  border-bottom: var(--primary) 5px solid;
 }
 .c-day-options__option--selected {
-  border-bottom: var(--primary) 4px solid;
+  border-bottom: var(--primary) 5px solid;
   font-weight: 900;
 }
 
