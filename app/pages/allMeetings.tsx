@@ -133,6 +133,8 @@ export const SchedulesList = () => {
 
   const currentCityState = cities.find((c) => c.city === cityFilter && c.state === stateFilter)
 
+  console.log({ sortedSchedules })
+
   return (
     <div>
       <div className="c-page-header c-page-header--meetings">
