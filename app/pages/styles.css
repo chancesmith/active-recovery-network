@@ -212,10 +212,16 @@ code {
 }
 .c-day-options__option:hover {
   border-bottom: var(--primary) 5px solid;
+  opacity: 1;
 }
-.c-day-options__option--selected {
+.c-day-options__option--selected,
+.c-day-options__option--empty.c-day-options__option--selected {
   border-bottom: var(--primary) 5px solid;
   font-weight: 900;
+  opacity: 1;
+}
+.c-day-options__option--empty {
+  opacity: 0.4;
 }
 
 .c-btn {

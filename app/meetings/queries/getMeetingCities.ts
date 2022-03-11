@@ -17,6 +17,7 @@ export default resolver.pipe(
         schedules: {
           select: {
             id: true,
+            dayOfWeek: true,
           },
         },
       },

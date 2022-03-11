@@ -131,6 +131,8 @@ export const SchedulesList = () => {
     day: "",
   }
 
+  const currentCityState = cities.find((c) => c.city === cityFilter && c.state === stateFilter)
+
   return (
     <div>
       <div className="c-page-header c-page-header--meetings">
@@ -177,6 +179,11 @@ export const SchedulesList = () => {
               onClick={() => setDayFilter(day)}
               className={`c-day-options__option ${
                 dayFilter === day ? "c-day-options__option--selected" : ""
+              } ${
+                currentCityState?.schedules.filter((s) => s.dayOfWeek === day.toUpperCase())
+                  .length === 0
+                  ? "c-day-options__option--empty"
+                  : ""
               }`}
             >
               {day.slice(0, 1).toUpperCase()}
@@ -238,12 +245,8 @@ export const SchedulesList = () => {
             </p>
             {/* find count of schedules in current city */}
             <p>
-              There are{" "}
-              {
-                cities.find((c) => c.city === cityFilter && c.state === stateFilter)?.schedules
-                  .length
-              }{" "}
-              total scheduled meetings in {cityFilter}, {stateFilter}.
+              There are {currentCityState?.schedules.length} total scheduled meetings in{" "}
+              {cityFilter}, {stateFilter}.
             </p>
             <p>Switch to another day or select another city.</p>
           </div>
