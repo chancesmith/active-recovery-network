@@ -6,32 +6,20 @@ interface GetMeetingCitiesInput
 
 export default resolver.pipe(
   // resolver.authorize(),
-  async ({ where, orderBy, skip = 0, take = 100 }: GetMeetingCitiesInput) => {
-    // TODO: in multi-tenant app, you must add validation to ensure correct tenant
-    const {
-      items: meetings,
-      hasMore,
-      nextPage,
-      count,
-    } = await paginate({
-      skip,
-      take,
-      count: () => db.meeting.count({ where }),
-      query: (paginateArgs) =>
-        db.meeting.findMany({
-          distinct: ["city", "state"],
-          orderBy: { city: "asc" },
-          select: { city: true, state: true },
-          where,
-          ...paginateArgs,
-        }),
+  async ({}: GetMeetingCitiesInput) =>
+    db.meeting.findMany({
+      distinct: ["city", "state"],
+      // select:{
+      //   city: true,
+      //   state: true
+      // },
+      include: {
+        schedules: {
+          select: {
+            id: true,
+          },
+        },
+      },
+      orderBy: { city: "asc" },
     })
-
-    return {
-      meetings,
-      nextPage,
-      hasMore,
-      count,
-    }
-  }
 )

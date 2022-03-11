@@ -8,6 +8,7 @@ import {
   BlitzPage,
   Routes,
   useMutation,
+  useQuery,
 } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import getSchedulesWithMeetings from "app/schedules/queries/getSchedulesWithMeetings"
@@ -76,7 +77,7 @@ export const SchedulesList = () => {
       },
     },
   })
-  const [{ meetings: cities }] = usePaginatedQuery(getMeetingCities, {
+  const [cities] = useQuery(getMeetingCities, {
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
   })
@@ -153,7 +154,7 @@ export const SchedulesList = () => {
             .filter((city) => !!city.city)
             .map((city) => (
               <option key={`${city.city}-${city.state}`} value={`${city.city}-${city.state}` || ""}>
-                {city.city}, {city.state}
+                {city.city}, {city.state} ({city.schedules.length})
               </option>
             ))}
         </select>
