@@ -211,12 +211,12 @@ code {
   border-bottom: transparent 4px solid;
 }
 .c-day-options__option:hover {
-  border-bottom: var(--primary) 5px solid;
+  border-bottom: var(--primary) 4px solid;
   opacity: 1;
 }
 .c-day-options__option--selected,
 .c-day-options__option--empty.c-day-options__option--selected {
-  border-bottom: var(--primary) 5px solid;
+  border-bottom: var(--primary) 4px solid;
   font-weight: 900;
   opacity: 1;
 }
