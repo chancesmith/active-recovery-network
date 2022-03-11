@@ -231,27 +231,44 @@ export const SchedulesList = () => {
           )
         })}
 
-        {sortedSchedules.length === 0 ? <div className="c-no-result">No meetings found</div> : null}
-        <div className="u-flex u-justify-center">
-          <button
-            className="c-btn-alt u-margin-right"
-            disabled={page === 0}
-            onClick={goToPreviousPage}
-          >
-            Previous
-          </button>
-          <button className="c-btn-alt" disabled={!hasMore} onClick={goToNextPage}>
-            Next
-          </button>
-        </div>
+        {sortedSchedules.length === 0 ? (
+          <div className="c-no-result">
+            <p>
+              <strong>No meetings listed.</strong>
+            </p>
+            {/* find count of schedules in current city */}
+            <p>
+              There are{" "}
+              {
+                cities.find((c) => c.city === cityFilter && c.state === stateFilter)?.schedules
+                  .length
+              }{" "}
+              total scheduled meetings in {cityFilter}, {stateFilter}.
+            </p>
+            <p>Switch to another day or select another city.</p>
+          </div>
+        ) : (
+          <div className="u-flex u-justify-center">
+            <button
+              className="c-btn-alt u-margin-right"
+              disabled={page === 0}
+              onClick={goToPreviousPage}
+            >
+              Previous
+            </button>
+            <button className="c-btn-alt" disabled={!hasMore} onClick={goToNextPage}>
+              Next
+            </button>
+          </div>
+        )}
       </div>
       <style jsx>
         {`
           .c-no-result {
             text-align: center;
             background: #f5f5f5;
-            padding: 1rem;
-            margin: 1rem 0;
+            padding: 2rem 1rem;
+            margin: 1rem 0 0;
           }
           .layout-wrapper--top-overlay {
             margin: -5rem auto;
