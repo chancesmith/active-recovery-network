@@ -314,7 +314,13 @@ const AllMeetingsPage: BlitzPage = () => {
       </Head>
 
       <div>
-        <Suspense fallback={<div className="loading">Loading Meetings...</div>}>
+        <Suspense
+          fallback={
+            <div className="loading">
+              <i className="fas fa-circle-notch fa-spin" /> Loading Meetings...
+            </div>
+          }
+        >
           <SchedulesList />
         </Suspense>
       </div>

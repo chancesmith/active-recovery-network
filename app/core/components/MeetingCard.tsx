@@ -80,9 +80,9 @@ const MeetingCard = ({
             </button>
             <button onClick={onClickFavorite} className="c-btn c-btn-icon">
               {isFavorite ? (
-                <i className={`fa fa-light fa-heart c-meeting-card__favorite--favorited`} />
+                <i className={`fa fa-light fa-bookmark c-meeting-card__favorite--favorited`} />
               ) : (
-                <i className={`fal fa-solid fa-heart c-meeting-card__favorite`} />
+                <i className={`fal fa-solid fa-bookmark c-meeting-card__favorite`} />
               )}
             </button>
           </div>
@@ -168,10 +168,16 @@ const MeetingCard = ({
         }
 
         .c-meeting-card__favorite {
-          color: rgb(216, 94, 94);
+           {
+            /* color: rgb(216, 94, 94); */
+          }
+          color: var(--primary);
         }
         .c-meeting-card__favorite--favorited {
-          color: rgb(216, 94, 94);
+           {
+            /* color: rgb(216, 94, 94); */
+          }
+          color: var(--primary);
         }
         .c-meeting-card__actions {
           padding-top: 0.5rem;

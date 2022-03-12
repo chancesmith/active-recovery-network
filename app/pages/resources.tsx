@@ -7,55 +7,53 @@ const Resources: BlitzPage = () => {
     <div className="container">
       <main>
         <h1>Resources</h1>
-        <Link href="/allMeetings">Meetings</Link>
-        <ul>
+        <ul className="c-resources">
           <li>
             <a href="https://www.aa.org/resources/media?terms=big+book&format=audio&items_per_page=24&sort_bef_combine=title_ASC">
-              Big Blue Book Audio
-            </a>{" "}
-            (Alcoholics Anonymous)
-          </li>
-          <li>
-            <a href="https://www.aa.org/resources/media?terms=twelve+steps+twelve+traditions&format=audio&items_per_page=24&sort_bef_combine=title_ASC">
-              Twelve Steps and Twelve Traditions Audio
-            </a>
-          </li>
-          <li>
-            <a href="https://www.aa.org/resources/media?terms=living+sober&format=audio&items_per_page=24&sort_bef_combine=title_ASC">
-              Living Sober Audio
+              <i className="fal fa-headphones" /> Big Blue Book Audio
             </a>
           </li>
           <li>
             <a href="http://www.portlandeyeopener.com/AA-BigBook-4th-Edition.pdf">
-              Big Blue Book PDF
-            </a>{" "}
-            (Alcoholics Anonymous)
+              <i className="fal fa-book" /> Big Blue Book E-Book
+            </a>
           </li>
-          <li>
-            <a href="http://www.nauca.us/wp-content/uploads/2015/05/1988-5th-Edition-Basic-Text-Books-1-2.pdf">
-              Narcotics Anonymous PDF
+          <li title="Twelve Steps and Twelve Traditions">
+            <a href="https://www.aa.org/resources/media?terms=twelve+steps+twelve+traditions&format=audio&items_per_page=24&sort_bef_combine=title_ASC">
+              <i className="fal fa-headphones" /> Twelve and Twelve
             </a>
           </li>
           <li>
-            <a href="https://virtual-na.org/meetings/">Narcotics Anonymous Zoom meetings</a>
+            <a href="https://www.aa.org/resources/media?terms=living+sober&format=audio&items_per_page=24&sort_bef_combine=title_ASC">
+              <i className="fal fa-headphones" /> Living Sober{" "}
+            </a>
           </li>
           <li>
-            <a href="https://aa-intergroup.org/meetings">Alcoholics Anonymous Zoom meetings</a>
+            <a href="http://www.nauca.us/wp-content/uploads/2015/05/1988-5th-Edition-Basic-Text-Books-1-2.pdf">
+              <i className="fal fa-book" /> Narcotics Anonymous
+            </a>
           </li>
           <li>
-            <a href="https://recovery.org/browse/tennessee/">American Addiction Centers</a>{" "}
+            <a href="https://virtual-na.org/meetings/">
+              <i className="fal fa-webcam" /> Narcotics Anonymous Zoom meetings
+            </a>
+          </li>
+          <li>
+            <a href="https://aa-intergroup.org/meetings">
+              <i className="fal fa-webcam" /> Alcoholics Anonymous Zoom meetings
+            </a>
+          </li>
+          <li>
+            <a href="https://recovery.org/browse/tennessee/">
+              <i className="fal fa-books" /> American Addiction Centers
+            </a>{" "}
             (National Database)
           </li>
           <li>
             <a href="https://www.tn.gov/behavioral-health/substance-abuse-services/prevention/tennessee-redline.html">
-              Tennessee RedLine
+              <i className="fal fa-phone" /> Tennessee RedLine
             </a>{" "}
             (Phone #1-800-889-9789)
-          </li>
-          <li>
-            <a href="https://www.aa.org/find-aa">
-              “The Way It has Always been Done” Intergroup Database
-            </a>
           </li>
         </ul>
       </main>
@@ -66,7 +64,15 @@ const Resources: BlitzPage = () => {
         </a>
       </footer>
 
-      <style jsx global>{``}</style>
+      <style jsx>{`
+        .c-resources {
+          list-style: none;
+          margin: 1rem 0 0 0;
+        }
+        .c-resources li {
+          padding: 0 0 1.2rem 0;
+        }
+      `}</style>
     </div>
   )
 }

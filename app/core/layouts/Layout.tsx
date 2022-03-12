@@ -63,7 +63,7 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
                 }`}
                 onClick={handleCloseMenu}
               >
-                <i className="fal fa-user" /> Resources
+                <i className="fal fa-books" /> Resources
               </span>
             </Link>
           </li>
