@@ -45,15 +45,14 @@ const Resources: BlitzPage = () => {
           </li>
           <li>
             <a href="https://recovery.org/browse/tennessee/">
-              <i className="fal fa-books" /> American Addiction Centers
-            </a>{" "}
-            (National Database)
+              <i className="fal fa-books" /> American Addiction Centers (National Database)
+            </a>
           </li>
           <li>
             <a href="https://www.tn.gov/behavioral-health/substance-abuse-services/prevention/tennessee-redline.html">
               <i className="fal fa-phone" /> Tennessee RedLine
             </a>{" "}
-            (Phone #1-800-889-9789)
+            (Phone # <a href="tel:1-800-889-9789">1-800-889-9789</a> )
           </li>
         </ul>
       </main>
@@ -68,6 +67,7 @@ const Resources: BlitzPage = () => {
         .c-resources {
           list-style: none;
           margin: 1rem 0 0 0;
+          padding: 0 0 0 1rem;
         }
         .c-resources li {
           padding: 0 0 1.2rem 0;
