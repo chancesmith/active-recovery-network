@@ -60,6 +60,13 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
         </ul>
       </div>
       <style jsx>{`
+        .menu {
+          position: absolute;
+          top: 0;
+          right: 1rem;
+          padding: 10px;
+          cursor: pointer;
+        }
         .c-menu {
           display: none;
           position: absolute;
