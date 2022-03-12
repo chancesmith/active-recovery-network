@@ -38,24 +38,34 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
         {children}
       </div>
 
+      {isMenuOpen ? <div className="c-menu__overlay" onClick={handleCloseMenu} /> : null}
+
       <div className={`c-menu ${isMenuOpen ? "c-menu__open" : ""}`}>
         <div className="c-menu__close" onClick={handleCloseMenu}>
           <i className="fa fa-times" />
         </div>
         <ul>
-          <li
-            onClick={handleCloseMenu}
-            className={`c-menu__item ${router.asPath === "/" ? "c-menu__item--active" : ""}`}
-          >
-            <Link href="/">Meetings</Link>
+          <li>
+            <Link href="/">
+              <span
+                onClick={handleCloseMenu}
+                className={`c-menu__item ${router.asPath === "/" ? "c-menu__item--active" : ""}`}
+              >
+                <i className="fal fa-users" /> Meetings
+              </span>
+            </Link>
           </li>
-          <li
-            onClick={handleCloseMenu}
-            className={`c-menu__item ${
-              router.asPath === "/resources" ? "c-menu__item--active" : ""
-            }`}
-          >
-            <Link href="/resources">Resources</Link>
+          <li>
+            <Link href="/resources">
+              <span
+                className={`c-menu__item ${
+                  router.asPath === "/resources" ? "c-menu__item--active" : ""
+                }`}
+                onClick={handleCloseMenu}
+              >
+                <i className="fal fa-user" /> Resources
+              </span>
+            </Link>
           </li>
         </ul>
       </div>
@@ -67,37 +77,71 @@ const Layout: BlitzLayout<{ title?: string }> = ({ title, children }) => {
           padding: 10px;
           cursor: pointer;
         }
+        .c-menu__overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.7);
+          z-index: 0;
+          cursor: pointer;
+        }
         .c-menu {
+          z-index: 1;
           display: none;
-          position: absolute;
+          position: fixed;
           height: 100vh;
           top: 0;
           right: 0;
           background: #fff;
-          padding: 1rem 125px 1rem 1rem;
+          padding: 1rem 0.2rem 1rem;
+          width: 80%;
+          max-width: 325px;
         }
         .c-menu a {
           text-decoration: none !important;
         }
         .c-menu ul {
           list-style-type: none;
-          padding: 0.5rem 0 0 1rem;
+          padding: 1.2rem 1rem 0 1rem;
         }
-        .c-menu ul li,
         .c-menu__item {
-          padding: 1rem 0 0 0;
+          margin: 0.2rem 0.2rem 0;
+          padding: 1rem 0.6rem;
+          width: 100%;
+          display: block;
+          cursor: pointer;
+          color: #333;
         }
-        .c-menu__item--active {
+        .c-menu__item i {
+          margin-right: 0.5rem;
+        }
+        .c-menu__item:hover {
+          color: var(--primary);
+        }
+
+        .c-menu__item:hover {
+          background: #eee;
           font-weight: bold;
+          border-radius: 0.5rem;
+        }
+
+        .c-menu__item--active,
+        .c-menu__item--active i {
+          background: #ccc;
+          font-weight: bold;
+          border-radius: 0.5rem;
         }
         .c-menu__open {
           display: block;
         }
         .c-menu__close {
           position: absolute;
-          right: 1rem;
-          top: 1rem;
+          right: 1.7rem;
+          top: 1.5rem;
           color: var(--primary);
+          cursor: pointer;
         }
       `}</style>
     </>
